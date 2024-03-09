@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/rdb_server.dir/server1.cpp.o -o rdb_server  -lrocksdb -ldl /usr/lib/x86_64-linux-gnu/libpthread.a 

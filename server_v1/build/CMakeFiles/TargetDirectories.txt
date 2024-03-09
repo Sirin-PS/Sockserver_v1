@@ -1,0 +1,3 @@
+/home/darya/cxx_projects/db_server/server/build/CMakeFiles/rdb_server.dir
+/home/darya/cxx_projects/db_server/server/build/CMakeFiles/edit_cache.dir
+/home/darya/cxx_projects/db_server/server/build/CMakeFiles/rebuild_cache.dir
