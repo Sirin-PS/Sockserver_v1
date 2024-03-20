@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/darya/cxx_projects/db_server/server/../include -I/home/darya/cxx_projects/db_server/server/../librocksdb.a
+CXX_INCLUDES = -I/home/darya/Documents/fromGit/Sockserver_v1/server_v1/../librocksdb.a
 
 CXX_FLAGS = -std=gnu++17
 

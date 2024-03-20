@@ -1,3 +1,3 @@
-/home/darya/cxx_projects/db_server/client/build/CMakeFiles/rdb_client.dir
-/home/darya/cxx_projects/db_server/client/build/CMakeFiles/edit_cache.dir
-/home/darya/cxx_projects/db_server/client/build/CMakeFiles/rebuild_cache.dir
+/home/darya/Documents/fromGit/Sockserver_v1/client_v1/build/CMakeFiles/rdb_client1.dir
+/home/darya/Documents/fromGit/Sockserver_v1/client_v1/build/CMakeFiles/edit_cache.dir
+/home/darya/Documents/fromGit/Sockserver_v1/client_v1/build/CMakeFiles/rebuild_cache.dir

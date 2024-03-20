@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/darya/cxx_projects/db_server/client/../include
+CXX_INCLUDES = 
 
 CXX_FLAGS = -std=gnu++17
 

@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/darya/cxx_projects/db_server/client/client1.cpp" "CMakeFiles/rdb_client.dir/client1.cpp.o" "gcc" "CMakeFiles/rdb_client.dir/client1.cpp.o.d"
+  "/home/darya/Documents/fromGit/Sockserver_v1/client_v1/client1.cpp" "CMakeFiles/rdb_client1.dir/client1.cpp.o" "gcc" "CMakeFiles/rdb_client1.dir/client1.cpp.o.d"
   )
 
 # Targets to which this target links.
