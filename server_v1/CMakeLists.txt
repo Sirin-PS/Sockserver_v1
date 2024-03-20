@@ -7,7 +7,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED on)
 
 include_directories(
     ../include
-    ../librocksdb.a
 )
 
 find_library(PTHREAD_LIBRARY pthread)
