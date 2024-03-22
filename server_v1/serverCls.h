@@ -1,7 +1,6 @@
 #include <string>
 #include <map>
 #include <rocksdb/db.h>
-#include <sys/socket.h>
 #include <netinet/in.h>
 
 #pragma once
@@ -21,7 +20,8 @@ private:
     
     int sockServerCreate();
     int dbOpen(std::string dbName);
-    void *thread_func(void *arg);
+    // static void *static_thread_func(void *arg);
+    void thread_proc(int socket);
     void doGetRequest(int socket);
     void doSetRequest(int socket);
     std::string getClientIp(int socket);

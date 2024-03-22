@@ -1,6 +1,7 @@
 #include "serverCls.h"
 #include <iostream>
-#include <pthread.h>
+//#include <pthread.h>
+#include <thread>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <signal.h>
@@ -74,15 +75,24 @@ int ServerCls::sockSeverAccepst() {
         // exit(EXIT_FAILURE);
     }
     else {
-        pthread_t tid;
-        pthread_create(&tid, NULL, ServerCls::thread_func, (void*) &client_sock);
-        pthread_detach(tid);
-        return (int)tid;
+        // pthread_t tid;
+        // pthread_create(&tid, NULL, ServerCls::static_thread_func, (void*) &client_sock);
+        // pthread_detach(tid);
+        // return (int)tid;
+        std::thread thread1(&ServerCls::thread_proc, this, client_sock);
+        //std::thread::id tid = (int)thread1.get_id();
+        thread1.detach();
+        return 0;
     }
 }
 
-void *ServerCls::thread_func(void *arg) {
-    int client_sock = *(int*)arg;
+// void *ServerCls::static_thread_func(void *arg) {
+//     int client_sock = *(int*)arg;
+//     this->thread_proc(client_sock);
+//     return NULL;    
+// }
+
+void ServerCls::thread_proc(int socket) {
     char request_buf[MSG_MAX_LEN] = "";
 
     // прием команды от клиента
@@ -90,27 +100,29 @@ void *ServerCls::thread_func(void *arg) {
     {
         {"GET", 1}, {"SET", 2}, {"OUT", 3}
     };
-    if (recv(client_sock, &request_buf, MSG_MAX_LEN, 0) < 0) {
+    if (recv(socket, &request_buf, MSG_MAX_LEN, 0) < 0) {
         std::cout << "request receive error";
-        close(client_sock);
-        pthread_exit(0);
+        close(socket);
+        //pthread_exit(0);
+        return;
     }
     // определение команды
     std::string request = request_buf;    
     int request_num = commands[request];
     switch(request_num) {
         case 1:
-            doGetRequest(client_sock);
+            doGetRequest(socket);
             break;        
         case 2:
-            doSetRequest(client_sock);
+            doSetRequest(socket);
             break;           
         default:
             std::cout << "command undefined";
             break;
     }
-    close(client_sock);
-    pthread_exit(0);
+    close(socket);
+    //pthread_exit(0);
+    return;
 }
 
 void ServerCls::doGetRequest(int socket) {
