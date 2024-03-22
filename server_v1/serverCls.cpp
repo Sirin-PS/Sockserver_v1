@@ -1,0 +1,180 @@
+#include "serverCls.h"
+#include <iostream>
+#include <pthread.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <signal.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+#include <errno.h>
+#include <string>
+#include <vector>
+#include <rocksdb/db.h>
+#include <rocksdb/options.h>
+
+// constructor
+ServerCls::ServerCls(std::string idAddr, std::string dbName) {
+    if (sockServerCreate(idAddr) == -1) {
+        std::cout << "error with server socket creating!\n";
+    }
+    if (dbOpen(dbName) == -1) {
+        std::cout << "error with db opening!\n";
+    }
+}
+
+int ServerCls::sockServerCreate(std::string idAddr) {
+    this->listener = socket(AF_INET, SOCK_STREAM, 0);
+    if (this->listener < 0) {
+        perror("socket");
+        return -1;
+        // exit(EXIT_FAILURE);
+    }
+    this->address.sin_family = AF_INET;
+    this->address.sin_port = htons(8080);
+    this->address.sin_addr.s_addr = htonl(idAddr);
+    if (bind(this->listener, (struct sockaddr*) &(this->address), sizeof(this->address)) < 0) {
+        perror("bind");
+        return -1;
+        // exit(EXIT_FAILURE);
+    }
+    listen(this->listener, ServerCls::QUEUE_LEN);
+    return 0;
+}
+
+int ServerCls::dbOpen(std::string dbName) {
+    rocksdb::Options options;
+    rocksdb::Status status;
+    options.create_if_missing = true;
+    status = rocksdb::DB::Open(options, dbName, &(this->db));
+    if (status.ok()) {
+        return 0;
+    }
+    else {
+        return -1; 
+    }
+}
+
+int ServerCls::getListener() {
+    return this->listener;
+}
+
+rocksdb::DB* ServerCls::getDb() {
+    return this->db;
+}
+
+int ServerCls::sockSeverAccepst() {
+    int client_sock = accept(this->listener, NULL, NULL);
+    if (client_sock < 0) {
+        perror("accept");
+        std::cout << "accept error";
+        return -1;
+        // exit(EXIT_FAILURE);
+    }
+    else {
+        pthread_t tid;
+        pthread_create(&tid, NULL, this->thread_func, (void*) &client_sock);
+        pthread_detach(tid);
+        return (int)tid;
+    }
+}
+
+void *ServerCls::service_func(void *arg) {
+    int client_sock = *(int*)arg;
+    char request_buf[MSG_MAX_LEN] = "";
+
+    // прием команды от клиента
+    std::map<std::string, int> commands
+    {
+        {"GET", 1}, {"SET", 2}, {"OUT", 3}
+    };
+    if (recv(client_sock, &request_buf, MSG_MAX_LEN, 0) < 0) {
+        std::cout << "request receive error";
+        close(client_sock);
+        pthread_exit(0);
+    }
+    // определение команды
+    std::string request = request_buf;    
+    int request_num = commands[request];
+    switch(request_num) {
+        case 1:
+            doGetRequest(client_sock);
+            break;        
+        case 2:
+            doSetRequest(client_sock);
+            break;           
+        default:
+            std::cout << "command undefined";
+            break;
+    }
+    close(client_sock);
+    pthread_exit(0);
+}
+
+void ServerCls::doGetRequest(int socket) {
+    char msg[MSG_MAX_LEN] = "";
+    string usr_ip = getClientIp(socket);
+    string result = dbGet(usr_ip);
+    strcpy(msg, result.c_str());
+    send(client_sock, msg, sizeof(msg), 0); 
+    return;
+}
+
+void ServerCls::doSetRequest(int socket) {
+    char rcv_buf[MSG_MAX_LEN] = "";
+    char msg[MSG_MAX_LEN] = "";
+    std::string usr_ip = getClientIp(socket);
+    recv(socket, rcv_buf, MSG_MAX_LEN, 0)
+    std::string usr_info = rcv_buf;
+    std::string result = dbSet(usr_ip, usr_info);
+    strcpy(msg, result.c_str());
+    send(client_sock, msg, sizeof(msg), 0); 
+    return;
+}
+
+std::string ServerCls::getClientIp(int socket) {
+    struct sockaddr_in client_addr;
+    socklen_t addrlen = sizeof(client_addr);
+    // определение ip-адреса
+    if (getpeername(client_sock, (struct sockaddr*) &client_addr, &addrlen) < 0) {
+        //perror("getpeername");
+        std::cout << "getpeername error";
+    }
+    std::string usr_ip = inet_ntoa(client_addr.sin_addr);
+    return usr_ip;
+}
+
+std::string ServerCls::dbGet(std::string key) {
+    rocksdb::Status status;
+    std::string result;
+    status = this->db->Get(rocksdb::ReadOptions(), usr_ip, &result);
+    if (status.ok()) {
+        return result;
+    }
+    else if (status.IsNotFound()) {
+        result = "Info is not found!";
+        return result;
+    }
+    else {
+        return status.ToString();
+    }
+}
+
+std::string ServerCls::dbSet(std::string key, std::string value) {
+    rocksdb::Status status;
+    std::string result;
+    status = this->db->Put(rocksdb::WriteOptions(), usr_ip, value);
+    if (status.ok()) {
+        result = "Info successfully updated!";
+        return result;
+    }
+    else {
+        return status.ToString();
+    }
+}
+
+ServerCls::~ServerCls() {
+    close(listener);
+    status = db->Close();
+    delete db;
+}
