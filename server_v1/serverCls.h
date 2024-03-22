@@ -9,7 +9,7 @@
 #define MSG_MAX_LEN 1024
 
 class ServerCls {
-private:
+protected:
     const int QUEUE_LEN = 10;
     const char* SERVER_IP;
 
@@ -17,7 +17,7 @@ private:
     struct sockaddr_in address;
     rocksdb::DB* db;
     //vector<int> clients; - нужно ли хранить всех подключившихся клиентов?
-    
+ 
     int sockServerCreate();
     int dbOpen(std::string dbName);
     // static void *static_thread_func(void *arg);
@@ -35,4 +35,12 @@ public:
     rocksdb::DB* getDb();
     ~ServerCls();
 
+};
+
+class ServerClsVer2 : public ServerCls {
+protected:
+    void thread_proc(int socket);
+public:
+    ServerClsVer2(std::string ipAddr, std::string dbName) : ServerCls(ipAddr, dbName) {}
+    int sockSeverAccepst();
 };

@@ -74,22 +74,12 @@ int ServerCls::sockSeverAccepst() {
         // exit(EXIT_FAILURE);
     }
     else {
-        // pthread_t tid;
-        // pthread_create(&tid, NULL, ServerCls::static_thread_func, (void*) &client_sock);
-        // pthread_detach(tid);
-        // return (int)tid;
         std::thread thread1(&ServerCls::thread_proc, this, client_sock);
         //std::thread::id tid = (int)thread1.get_id();
         thread1.detach();
         return 0;
     }
 }
-
-// void *ServerCls::static_thread_func(void *arg) {
-//     int client_sock = *(int*)arg;
-//     this->thread_proc(client_sock);
-//     return NULL;    
-// }
 
 void ServerCls::thread_proc(int socket) {
     char request_buf[MSG_MAX_LEN] = "";
@@ -102,7 +92,6 @@ void ServerCls::thread_proc(int socket) {
     if (recv(socket, &request_buf, MSG_MAX_LEN, 0) < 0) {
         std::cout << "request receive error";
         close(socket);
-        //pthread_exit(0);
         return;
     }
     // определение команды
@@ -120,7 +109,6 @@ void ServerCls::thread_proc(int socket) {
             break;
     }
     close(socket);
-    //pthread_exit(0);
     return;
 }
 
@@ -190,4 +178,59 @@ ServerCls::~ServerCls() {
     close(listener);
     rocksdb::Status status = db->Close();
     delete db;
+}
+
+//------------ServerClsVer2---------------------
+int ServerClsVer2::sockSeverAccepst() {
+    int client_sock = accept(this->listener, NULL, NULL);
+    if (client_sock < 0) {
+        perror("accept");
+        std::cout << "accept error";
+        return -1;
+        // exit(EXIT_FAILURE);
+    }
+    else {
+        std::cout << "thread created!\n";
+        std::thread thread1(&ServerClsVer2::thread_proc, this, client_sock);
+        //std::thread::id tid = (int)thread1.get_id();
+        thread1.detach();
+        return 0;
+    }
+}
+
+void ServerClsVer2::thread_proc(int socket) {
+    char request_buf[MSG_MAX_LEN] = "";
+
+    // прием команды от клиента
+    std::map<std::string, int> commands
+    {
+        {"GET", 1}, {"SET", 2}, {"OUT", 3}
+    };
+    int request_num = 0;
+    while(request_num != 3) {
+        if (recv(socket, &request_buf, MSG_MAX_LEN, 0) < 0) {
+            std::cout << "request receive error";
+            close(socket);
+            return;
+        }    
+        // определение команды
+        std::string request = request_buf;    
+        request_num = commands[request];
+        switch(request_num) {
+            case 1:
+                doGetRequest(socket);
+                break;        
+            case 2:
+                doSetRequest(socket);
+                break; 
+            case 3:
+                std::cout << "Seance finished!\n";             
+                break;          
+            default:
+                std::cout << "command undefined\n";
+                break;
+        }
+    }    
+    close(socket);
+    return;
 }
