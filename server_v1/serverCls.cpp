@@ -14,8 +14,9 @@
 #include <rocksdb/options.h>
 
 // constructor
-ServerCls::ServerCls(std::string idAddr, std::string dbName) {
-    if (sockServerCreate(idAddr) == -1) {
+ServerCls::ServerCls(std::string ipAddr, std::string dbName) {
+    SERVER_IP = ipAddr.c_str();
+    if (sockServerCreate() == -1) {
         std::cout << "error with server socket creating!\n";
     }
     if (dbOpen(dbName) == -1) {
@@ -23,7 +24,7 @@ ServerCls::ServerCls(std::string idAddr, std::string dbName) {
     }
 }
 
-int ServerCls::sockServerCreate(std::string idAddr) {
+int ServerCls::sockServerCreate() {
     this->listener = socket(AF_INET, SOCK_STREAM, 0);
     if (this->listener < 0) {
         perror("socket");
@@ -32,7 +33,8 @@ int ServerCls::sockServerCreate(std::string idAddr) {
     }
     this->address.sin_family = AF_INET;
     this->address.sin_port = htons(8080);
-    this->address.sin_addr.s_addr = htonl(idAddr);
+    //this->address.sin_addr.s_addr = htonl(idAddr); 
+    inet_aton(SERVER_IP, &address.sin_addr);
     if (bind(this->listener, (struct sockaddr*) &(this->address), sizeof(this->address)) < 0) {
         perror("bind");
         return -1;
@@ -73,13 +75,13 @@ int ServerCls::sockSeverAccepst() {
     }
     else {
         pthread_t tid;
-        pthread_create(&tid, NULL, this->thread_func, (void*) &client_sock);
+        pthread_create(&tid, NULL, ServerCls::thread_func, (void*) &client_sock);
         pthread_detach(tid);
         return (int)tid;
     }
 }
 
-void *ServerCls::service_func(void *arg) {
+void *ServerCls::thread_func(void *arg) {
     int client_sock = *(int*)arg;
     char request_buf[MSG_MAX_LEN] = "";
 
@@ -113,10 +115,10 @@ void *ServerCls::service_func(void *arg) {
 
 void ServerCls::doGetRequest(int socket) {
     char msg[MSG_MAX_LEN] = "";
-    string usr_ip = getClientIp(socket);
-    string result = dbGet(usr_ip);
+    std::string usr_ip = getClientIp(socket);
+    std::string result = dbGet(usr_ip);
     strcpy(msg, result.c_str());
-    send(client_sock, msg, sizeof(msg), 0); 
+    send(socket, msg, sizeof(msg), 0); 
     return;
 }
 
@@ -124,11 +126,11 @@ void ServerCls::doSetRequest(int socket) {
     char rcv_buf[MSG_MAX_LEN] = "";
     char msg[MSG_MAX_LEN] = "";
     std::string usr_ip = getClientIp(socket);
-    recv(socket, rcv_buf, MSG_MAX_LEN, 0)
+    recv(socket, rcv_buf, MSG_MAX_LEN, 0);
     std::string usr_info = rcv_buf;
     std::string result = dbSet(usr_ip, usr_info);
     strcpy(msg, result.c_str());
-    send(client_sock, msg, sizeof(msg), 0); 
+    send(socket, msg, sizeof(msg), 0); 
     return;
 }
 
@@ -136,7 +138,7 @@ std::string ServerCls::getClientIp(int socket) {
     struct sockaddr_in client_addr;
     socklen_t addrlen = sizeof(client_addr);
     // определение ip-адреса
-    if (getpeername(client_sock, (struct sockaddr*) &client_addr, &addrlen) < 0) {
+    if (getpeername(socket, (struct sockaddr*) &client_addr, &addrlen) < 0) {
         //perror("getpeername");
         std::cout << "getpeername error";
     }
@@ -147,7 +149,7 @@ std::string ServerCls::getClientIp(int socket) {
 std::string ServerCls::dbGet(std::string key) {
     rocksdb::Status status;
     std::string result;
-    status = this->db->Get(rocksdb::ReadOptions(), usr_ip, &result);
+    status = this->db->Get(rocksdb::ReadOptions(), key, &result);
     if (status.ok()) {
         return result;
     }
@@ -163,7 +165,7 @@ std::string ServerCls::dbGet(std::string key) {
 std::string ServerCls::dbSet(std::string key, std::string value) {
     rocksdb::Status status;
     std::string result;
-    status = this->db->Put(rocksdb::WriteOptions(), usr_ip, value);
+    status = this->db->Put(rocksdb::WriteOptions(), key, value);
     if (status.ok()) {
         result = "Info successfully updated!";
         return result;
@@ -175,6 +177,6 @@ std::string ServerCls::dbSet(std::string key, std::string value) {
 
 ServerCls::~ServerCls() {
     close(listener);
-    status = db->Close();
+    rocksdb::Status status = db->Close();
     delete db;
 }
