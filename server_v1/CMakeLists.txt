@@ -9,11 +9,9 @@ include_directories(
     ../include
 )
 
-find_library(PTHREAD_LIBRARY pthread)
-
 add_executable(
-  rdb_server1 serverCls.cpp serverCls.h)
+  rdb_server1 mainServer.cpp serverCls.cpp serverCls.h)
 
 target_link_libraries(
-  rdb_server1 rocksdb dl ${PTHREAD_LIBRARY})
+  rdb_server1 rocksdb)
 

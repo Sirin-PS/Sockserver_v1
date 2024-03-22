@@ -1,1 +1,1 @@
-/usr/bin/c++ -rdynamic CMakeFiles/rdb_server1.dir/serverCls.cpp.o -o rdb_server1  -lrocksdb -ldl /usr/lib/x86_64-linux-gnu/libpthread.a 
+/usr/bin/c++ -rdynamic CMakeFiles/rdb_server1.dir/mainServer.cpp.o CMakeFiles/rdb_server1.dir/serverCls.cpp.o -o rdb_server1  -lrocksdb 

@@ -129,6 +129,30 @@ rdb_server1/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_server1.dir/build.make CMakeFiles/rdb_server1.dir/build
 .PHONY : rdb_server1/fast
 
+mainServer.o: mainServer.cpp.o
+.PHONY : mainServer.o
+
+# target to build an object file
+mainServer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_server1.dir/build.make CMakeFiles/rdb_server1.dir/mainServer.cpp.o
+.PHONY : mainServer.cpp.o
+
+mainServer.i: mainServer.cpp.i
+.PHONY : mainServer.i
+
+# target to preprocess a source file
+mainServer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_server1.dir/build.make CMakeFiles/rdb_server1.dir/mainServer.cpp.i
+.PHONY : mainServer.cpp.i
+
+mainServer.s: mainServer.cpp.s
+.PHONY : mainServer.s
+
+# target to generate assembly for a file
+mainServer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_server1.dir/build.make CMakeFiles/rdb_server1.dir/mainServer.cpp.s
+.PHONY : mainServer.cpp.s
+
 serverCls.o: serverCls.cpp.o
 .PHONY : serverCls.o
 
@@ -162,6 +186,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... rdb_server1"
+	@echo "... mainServer.o"
+	@echo "... mainServer.i"
+	@echo "... mainServer.s"
 	@echo "... serverCls.o"
 	@echo "... serverCls.i"
 	@echo "... serverCls.s"

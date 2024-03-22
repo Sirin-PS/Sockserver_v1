@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/rdb_server1.dir/mainServer.cpp.o"
+  "CMakeFiles/rdb_server1.dir/mainServer.cpp.o.d"
   "CMakeFiles/rdb_server1.dir/serverCls.cpp.o"
   "CMakeFiles/rdb_server1.dir/serverCls.cpp.o.d"
   "rdb_server1"

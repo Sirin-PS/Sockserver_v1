@@ -1,5 +1,5 @@
-CMakeFiles/rdb_server1.dir/serverCls.cpp.o: \
- /home/darya/Documents/fromGit/Sockserver_v1/server_v1/serverCls.cpp \
+CMakeFiles/rdb_server1.dir/mainServer.cpp.o: \
+ /home/darya/Documents/fromGit/Sockserver_v1/server_v1/mainServer.cpp \
  /usr/include/stdc-predef.h \
  /home/darya/Documents/fromGit/Sockserver_v1/server_v1/serverCls.h \
  /usr/include/c++/11/string \
@@ -262,13 +262,4 @@ CMakeFiles/rdb_server1.dir/serverCls.cpp.o: \
  /usr/include/asm-generic/sockios.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
  /usr/include/x86_64-linux-gnu/bits/in.h /usr/include/c++/11/iostream \
- /usr/include/c++/11/istream /usr/include/c++/11/bits/istream.tcc \
- /usr/include/c++/11/thread /usr/include/c++/11/bits/std_thread.h \
- /usr/include/c++/11/bits/this_thread_sleep.h /usr/include/arpa/inet.h \
- /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
- /usr/include/x86_64-linux-gnu/bits/environments.h \
- /usr/include/x86_64-linux-gnu/bits/confname.h \
- /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
- /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
- /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
- /usr/include/linux/close_range.h
+ /usr/include/c++/11/istream /usr/include/c++/11/bits/istream.tcc
