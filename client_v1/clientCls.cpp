@@ -13,11 +13,11 @@ ClientCls::ClientCls(std::string ipAddr) {
     ClientCls::SERVER_IP = ipAddr.c_str();
     this->address.sin_family = AF_INET;
     this->address.sin_port = htons(8080);
-    inet_aton(ClientCls::SERVER_IP, &address.sin_addr);
+    inet_aton(ClientCls::SERVER_IP, &(this->address.sin_addr));
 }
 
 int ClientCls::getSocket() {
-    return this->socket;
+    return this->_socket;
 }
 
 int ClientCls::sockClientConnect() {
@@ -30,12 +30,12 @@ int ClientCls::sockClientConnect() {
             case 1:     // get
                 createConnection();
                 doGetRequest();
-                close(this->socket);
+                close(this->_socket);
                 break;        
             case 2:     // set
                 createConnection();
                 doSetRequest();
-                close(this->socket);
+                close(this->_socket);
                 break;
             case 3:     // out
                 std::cout << "\nBye!\n";
@@ -56,14 +56,13 @@ void ClientCls::showMenu() {
 }
 
 int ClientCls::createConnection() {
-    //int sock;
-    this->socket = socket(AF_INET, SOCK_STREAM, 0);
-    if (this->socket < 0) {
+    this->_socket = socket(AF_INET, SOCK_STREAM, 0);
+    if (this->_socket < 0) {
         perror("socket");
         //exit(EXIT_FAILURE);
         return -1;
     }
-    if (connect(this->socket, (struct sockaddr*) &(this->address), sizeof(this->address)) < 0) {
+    if (connect(this->_socket, (struct sockaddr*) &(this->address), sizeof(this->address)) < 0) {
         perror("connect");
         //exit(EXIT_FAILURE);
         return -1;
@@ -74,8 +73,8 @@ int ClientCls::createConnection() {
 void ClientCls::doGetRequest() {
     char msg_recv_buf[MSG_MAX_LEN];
     char request_buf[] = "GET";
-    send(this->socket, request_buf, sizeof(request_buf), 0);
-    recv(this->socket, msg_recv_buf, MSG_MAX_LEN, 0);
+    send(this->_socket, request_buf, sizeof(request_buf), 0);
+    recv(this->_socket, msg_recv_buf, MSG_MAX_LEN, 0);
     std::cout << "Msg from server:   " << msg_recv_buf << std::endl;
 }
 
@@ -84,15 +83,15 @@ void ClientCls::doSetRequest() {
     char msg_send_buf[MSG_MAX_LEN];
     char request_buf[] = "SET";
 
-    send(this->socket, request_buf, sizeof(request_buf), 0);
+    send(this->_socket, request_buf, sizeof(request_buf), 0);
     std::cout << "\nrequest: " << request_buf << std::endl;
     std::cout << "\nEnter message for server:   ";
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::cin.getline(msg_send_buf, MSG_MAX_LEN);
 
-    send(this->socket, msg_send_buf, sizeof(msg_send_buf), 0);
-    recv(this->socket, msg_recv_buf, MSG_MAX_LEN, 0);
+    send(this->_socket, msg_send_buf, sizeof(msg_send_buf), 0);
+    recv(this->_socket, msg_recv_buf, MSG_MAX_LEN, 0);
     std::cout << "Msg from server:   " << msg_recv_buf << std::endl;
 }
 
@@ -112,7 +111,7 @@ int ClientClsVer2::sockClientConnect() {
                 break;
             case 3: {   // out
                 char request_buf[] = "OUT";
-                send(this->socket, request_buf, sizeof(request_buf), 0);
+                send(this->_socket, request_buf, sizeof(request_buf), 0);
                 std::cout << "\nBye!\n";
                 break;
             }                
@@ -125,5 +124,5 @@ int ClientClsVer2::sockClientConnect() {
 }
 
 ClientClsVer2::~ClientClsVer2() {
-    close(socket);
+    close(_socket);
 }

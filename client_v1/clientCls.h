@@ -10,7 +10,7 @@ class ClientCls {
 protected:
     const char* SERVER_IP;
 
-    int socket;
+    int _socket;
     struct sockaddr_in address;
     
     // int sockClientCreate();
@@ -23,14 +23,14 @@ public:
     ClientCls(std::string ipAddr);
     int sockClientConnect();
     int getSocket();  // нужна или?
-    ~ClientCls();
+    //~ClientCls();
 
 };
 
 class ClientClsVer2 : public ClientCls {
 
 public:
-    ClientClsVer2(std::string ipAddr) : ClientCls(ipAddr) {createConnection();}
+    ClientClsVer2(std::string ipAddr) : ClientCls(ipAddr) { createConnection(); }
     int sockClientConnect();
     ~ClientClsVer2();
 };
