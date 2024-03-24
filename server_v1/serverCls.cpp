@@ -1,6 +1,5 @@
 #include "serverCls.h"
 #include <iostream>
-//#include <pthread.h>
 #include <thread>
 #include <sys/types.h>
 #include <sys/socket.h>

@@ -1,5 +1,4 @@
 #include <string>
-#include <map>
 #include <rocksdb/db.h>
 #include <netinet/in.h>
 
@@ -20,7 +19,6 @@ protected:
  
     int sockServerCreate();
     int dbOpen(std::string dbName);
-    // static void *static_thread_func(void *arg);
     void thread_proc(int socket);
     void doGetRequest(int socket);
     void doSetRequest(int socket);
