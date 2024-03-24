@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/rdb_client1.dir/client1.cpp.o"
-  "CMakeFiles/rdb_client1.dir/client1.cpp.o.d"
+  "CMakeFiles/rdb_client1.dir/clientCls.cpp.o"
+  "CMakeFiles/rdb_client1.dir/clientCls.cpp.o.d"
+  "CMakeFiles/rdb_client1.dir/mainClient.cpp.o"
+  "CMakeFiles/rdb_client1.dir/mainClient.cpp.o.d"
   "rdb_client1"
   "rdb_client1.pdb"
 )

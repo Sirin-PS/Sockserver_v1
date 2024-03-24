@@ -81,12 +81,12 @@ clean: CMakeFiles/rdb_client1.dir/clean
 CMakeFiles/rdb_client1.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_client1.dir/build.make CMakeFiles/rdb_client1.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_client1.dir/build.make CMakeFiles/rdb_client1.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/darya/Documents/fromGit/Sockserver_v1/client_v1/build/CMakeFiles --progress-num=1,2 "Built target rdb_client1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/darya/Documents/fromGit/Sockserver_v1/client_v1/build/CMakeFiles --progress-num=1,2,3 "Built target rdb_client1"
 .PHONY : CMakeFiles/rdb_client1.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/rdb_client1.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/darya/Documents/fromGit/Sockserver_v1/client_v1/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/darya/Documents/fromGit/Sockserver_v1/client_v1/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/rdb_client1.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/darya/Documents/fromGit/Sockserver_v1/client_v1/build/CMakeFiles 0
 .PHONY : CMakeFiles/rdb_client1.dir/rule

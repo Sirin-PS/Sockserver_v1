@@ -6,5 +6,5 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED on)
 
 add_executable(
-  rdb_client1 client1.cpp)
+  rdb_client1 mainClient.cpp clientCls.cpp clientCls.h)
 

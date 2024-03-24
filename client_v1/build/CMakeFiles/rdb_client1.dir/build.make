@@ -69,31 +69,47 @@ include CMakeFiles/rdb_client1.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/rdb_client1.dir/flags.make
 
-CMakeFiles/rdb_client1.dir/client1.cpp.o: CMakeFiles/rdb_client1.dir/flags.make
-CMakeFiles/rdb_client1.dir/client1.cpp.o: ../client1.cpp
-CMakeFiles/rdb_client1.dir/client1.cpp.o: CMakeFiles/rdb_client1.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darya/Documents/fromGit/Sockserver_v1/client_v1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/rdb_client1.dir/client1.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rdb_client1.dir/client1.cpp.o -MF CMakeFiles/rdb_client1.dir/client1.cpp.o.d -o CMakeFiles/rdb_client1.dir/client1.cpp.o -c /home/darya/Documents/fromGit/Sockserver_v1/client_v1/client1.cpp
+CMakeFiles/rdb_client1.dir/mainClient.cpp.o: CMakeFiles/rdb_client1.dir/flags.make
+CMakeFiles/rdb_client1.dir/mainClient.cpp.o: ../mainClient.cpp
+CMakeFiles/rdb_client1.dir/mainClient.cpp.o: CMakeFiles/rdb_client1.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darya/Documents/fromGit/Sockserver_v1/client_v1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/rdb_client1.dir/mainClient.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rdb_client1.dir/mainClient.cpp.o -MF CMakeFiles/rdb_client1.dir/mainClient.cpp.o.d -o CMakeFiles/rdb_client1.dir/mainClient.cpp.o -c /home/darya/Documents/fromGit/Sockserver_v1/client_v1/mainClient.cpp
 
-CMakeFiles/rdb_client1.dir/client1.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rdb_client1.dir/client1.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/darya/Documents/fromGit/Sockserver_v1/client_v1/client1.cpp > CMakeFiles/rdb_client1.dir/client1.cpp.i
+CMakeFiles/rdb_client1.dir/mainClient.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rdb_client1.dir/mainClient.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/darya/Documents/fromGit/Sockserver_v1/client_v1/mainClient.cpp > CMakeFiles/rdb_client1.dir/mainClient.cpp.i
 
-CMakeFiles/rdb_client1.dir/client1.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rdb_client1.dir/client1.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/darya/Documents/fromGit/Sockserver_v1/client_v1/client1.cpp -o CMakeFiles/rdb_client1.dir/client1.cpp.s
+CMakeFiles/rdb_client1.dir/mainClient.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rdb_client1.dir/mainClient.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/darya/Documents/fromGit/Sockserver_v1/client_v1/mainClient.cpp -o CMakeFiles/rdb_client1.dir/mainClient.cpp.s
+
+CMakeFiles/rdb_client1.dir/clientCls.cpp.o: CMakeFiles/rdb_client1.dir/flags.make
+CMakeFiles/rdb_client1.dir/clientCls.cpp.o: ../clientCls.cpp
+CMakeFiles/rdb_client1.dir/clientCls.cpp.o: CMakeFiles/rdb_client1.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darya/Documents/fromGit/Sockserver_v1/client_v1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/rdb_client1.dir/clientCls.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rdb_client1.dir/clientCls.cpp.o -MF CMakeFiles/rdb_client1.dir/clientCls.cpp.o.d -o CMakeFiles/rdb_client1.dir/clientCls.cpp.o -c /home/darya/Documents/fromGit/Sockserver_v1/client_v1/clientCls.cpp
+
+CMakeFiles/rdb_client1.dir/clientCls.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rdb_client1.dir/clientCls.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/darya/Documents/fromGit/Sockserver_v1/client_v1/clientCls.cpp > CMakeFiles/rdb_client1.dir/clientCls.cpp.i
+
+CMakeFiles/rdb_client1.dir/clientCls.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rdb_client1.dir/clientCls.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/darya/Documents/fromGit/Sockserver_v1/client_v1/clientCls.cpp -o CMakeFiles/rdb_client1.dir/clientCls.cpp.s
 
 # Object files for target rdb_client1
 rdb_client1_OBJECTS = \
-"CMakeFiles/rdb_client1.dir/client1.cpp.o"
+"CMakeFiles/rdb_client1.dir/mainClient.cpp.o" \
+"CMakeFiles/rdb_client1.dir/clientCls.cpp.o"
 
 # External object files for target rdb_client1
 rdb_client1_EXTERNAL_OBJECTS =
 
-rdb_client1: CMakeFiles/rdb_client1.dir/client1.cpp.o
+rdb_client1: CMakeFiles/rdb_client1.dir/mainClient.cpp.o
+rdb_client1: CMakeFiles/rdb_client1.dir/clientCls.cpp.o
 rdb_client1: CMakeFiles/rdb_client1.dir/build.make
 rdb_client1: CMakeFiles/rdb_client1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/darya/Documents/fromGit/Sockserver_v1/client_v1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable rdb_client1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/darya/Documents/fromGit/Sockserver_v1/client_v1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable rdb_client1"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/rdb_client1.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

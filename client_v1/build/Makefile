@@ -129,29 +129,53 @@ rdb_client1/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_client1.dir/build.make CMakeFiles/rdb_client1.dir/build
 .PHONY : rdb_client1/fast
 
-client1.o: client1.cpp.o
-.PHONY : client1.o
+clientCls.o: clientCls.cpp.o
+.PHONY : clientCls.o
 
 # target to build an object file
-client1.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_client1.dir/build.make CMakeFiles/rdb_client1.dir/client1.cpp.o
-.PHONY : client1.cpp.o
+clientCls.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_client1.dir/build.make CMakeFiles/rdb_client1.dir/clientCls.cpp.o
+.PHONY : clientCls.cpp.o
 
-client1.i: client1.cpp.i
-.PHONY : client1.i
+clientCls.i: clientCls.cpp.i
+.PHONY : clientCls.i
 
 # target to preprocess a source file
-client1.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_client1.dir/build.make CMakeFiles/rdb_client1.dir/client1.cpp.i
-.PHONY : client1.cpp.i
+clientCls.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_client1.dir/build.make CMakeFiles/rdb_client1.dir/clientCls.cpp.i
+.PHONY : clientCls.cpp.i
 
-client1.s: client1.cpp.s
-.PHONY : client1.s
+clientCls.s: clientCls.cpp.s
+.PHONY : clientCls.s
 
 # target to generate assembly for a file
-client1.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_client1.dir/build.make CMakeFiles/rdb_client1.dir/client1.cpp.s
-.PHONY : client1.cpp.s
+clientCls.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_client1.dir/build.make CMakeFiles/rdb_client1.dir/clientCls.cpp.s
+.PHONY : clientCls.cpp.s
+
+mainClient.o: mainClient.cpp.o
+.PHONY : mainClient.o
+
+# target to build an object file
+mainClient.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_client1.dir/build.make CMakeFiles/rdb_client1.dir/mainClient.cpp.o
+.PHONY : mainClient.cpp.o
+
+mainClient.i: mainClient.cpp.i
+.PHONY : mainClient.i
+
+# target to preprocess a source file
+mainClient.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_client1.dir/build.make CMakeFiles/rdb_client1.dir/mainClient.cpp.i
+.PHONY : mainClient.cpp.i
+
+mainClient.s: mainClient.cpp.s
+.PHONY : mainClient.s
+
+# target to generate assembly for a file
+mainClient.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_client1.dir/build.make CMakeFiles/rdb_client1.dir/mainClient.cpp.s
+.PHONY : mainClient.cpp.s
 
 # Help Target
 help:
@@ -162,9 +186,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... rdb_client1"
-	@echo "... client1.o"
-	@echo "... client1.i"
-	@echo "... client1.s"
+	@echo "... clientCls.o"
+	@echo "... clientCls.i"
+	@echo "... clientCls.s"
+	@echo "... mainClient.o"
+	@echo "... mainClient.i"
+	@echo "... mainClient.s"
 .PHONY : help
 
 
