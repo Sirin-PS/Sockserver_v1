@@ -84,7 +84,6 @@ void ClientCls::doSetRequest() {
     char request_buf[] = "SET";
 
     send(this->_socket, request_buf, sizeof(request_buf), 0);
-    std::cout << "\nrequest: " << request_buf << std::endl;
     std::cout << "\nEnter message for server:   ";
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -98,9 +97,9 @@ void ClientCls::doSetRequest() {
 //------------ClientClsVer2---------------------
 int ClientClsVer2::sockClientConnect() {
     // прием команды от клиента
-    int choice = 0;
-    showMenu();
+    int choice = 0;    
     do {
+        showMenu();
         std::cin >> choice;
         switch(choice) {
             case 1:     // get
