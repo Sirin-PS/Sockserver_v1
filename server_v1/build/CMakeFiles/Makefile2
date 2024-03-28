@@ -54,16 +54,16 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/darya/cxx_projects/db_server/server
+CMAKE_SOURCE_DIR = /home/darya/Documents/fromGit/Sockserver_v1/server_v1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/darya/cxx_projects/db_server/server/build
+CMAKE_BINARY_DIR = /home/darya/Documents/fromGit/Sockserver_v1/server_v1/build
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/rdb_server.dir/all
+all: CMakeFiles/rdb_server1.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,34 +71,34 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/rdb_server.dir/clean
+clean: CMakeFiles/rdb_server1.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/rdb_server.dir
+# Target rules for target CMakeFiles/rdb_server1.dir
 
 # All Build rule for target.
-CMakeFiles/rdb_server.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_server.dir/build.make CMakeFiles/rdb_server.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_server.dir/build.make CMakeFiles/rdb_server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/darya/cxx_projects/db_server/server/build/CMakeFiles --progress-num=1,2 "Built target rdb_server"
-.PHONY : CMakeFiles/rdb_server.dir/all
+CMakeFiles/rdb_server1.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_server1.dir/build.make CMakeFiles/rdb_server1.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_server1.dir/build.make CMakeFiles/rdb_server1.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/darya/Documents/fromGit/Sockserver_v1/server_v1/build/CMakeFiles --progress-num=1,2,3 "Built target rdb_server1"
+.PHONY : CMakeFiles/rdb_server1.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/rdb_server.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/darya/cxx_projects/db_server/server/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/rdb_server.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/darya/cxx_projects/db_server/server/build/CMakeFiles 0
-.PHONY : CMakeFiles/rdb_server.dir/rule
+CMakeFiles/rdb_server1.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/darya/Documents/fromGit/Sockserver_v1/server_v1/build/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/rdb_server1.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/darya/Documents/fromGit/Sockserver_v1/server_v1/build/CMakeFiles 0
+.PHONY : CMakeFiles/rdb_server1.dir/rule
 
 # Convenience name for target.
-rdb_server: CMakeFiles/rdb_server.dir/rule
-.PHONY : rdb_server
+rdb_server1: CMakeFiles/rdb_server1.dir/rule
+.PHONY : rdb_server1
 
 # clean rule for target.
-CMakeFiles/rdb_server.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_server.dir/build.make CMakeFiles/rdb_server.dir/clean
-.PHONY : CMakeFiles/rdb_server.dir/clean
+CMakeFiles/rdb_server1.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_server1.dir/build.make CMakeFiles/rdb_server1.dir/clean
+.PHONY : CMakeFiles/rdb_server1.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

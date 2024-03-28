@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/rdb_server1.dir/mainServer.cpp.o CMakeFiles/rdb_server1.dir/serverCls.cpp.o -o rdb_server1  -lrocksdb 

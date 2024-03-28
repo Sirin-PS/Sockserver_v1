@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/darya/cxx_projects/db_server/server
+CMAKE_SOURCE_DIR = /home/darya/Documents/fromGit/Sockserver_v1/server_v1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/darya/cxx_projects/db_server/server/build
+CMAKE_BINARY_DIR = /home/darya/Documents/fromGit/Sockserver_v1/server_v1/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/darya/cxx_projects/db_server/server/build/CMakeFiles /home/darya/cxx_projects/db_server/server/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/darya/Documents/fromGit/Sockserver_v1/server_v1/build/CMakeFiles /home/darya/Documents/fromGit/Sockserver_v1/server_v1/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/darya/cxx_projects/db_server/server/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/darya/Documents/fromGit/Sockserver_v1/server_v1/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,41 +117,65 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named rdb_server
+# Target rules for targets named rdb_server1
 
 # Build rule for target.
-rdb_server: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 rdb_server
-.PHONY : rdb_server
+rdb_server1: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 rdb_server1
+.PHONY : rdb_server1
 
 # fast build rule for target.
-rdb_server/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_server.dir/build.make CMakeFiles/rdb_server.dir/build
-.PHONY : rdb_server/fast
+rdb_server1/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_server1.dir/build.make CMakeFiles/rdb_server1.dir/build
+.PHONY : rdb_server1/fast
 
-server1.o: server1.cpp.o
-.PHONY : server1.o
+mainServer.o: mainServer.cpp.o
+.PHONY : mainServer.o
 
 # target to build an object file
-server1.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_server.dir/build.make CMakeFiles/rdb_server.dir/server1.cpp.o
-.PHONY : server1.cpp.o
+mainServer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_server1.dir/build.make CMakeFiles/rdb_server1.dir/mainServer.cpp.o
+.PHONY : mainServer.cpp.o
 
-server1.i: server1.cpp.i
-.PHONY : server1.i
+mainServer.i: mainServer.cpp.i
+.PHONY : mainServer.i
 
 # target to preprocess a source file
-server1.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_server.dir/build.make CMakeFiles/rdb_server.dir/server1.cpp.i
-.PHONY : server1.cpp.i
+mainServer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_server1.dir/build.make CMakeFiles/rdb_server1.dir/mainServer.cpp.i
+.PHONY : mainServer.cpp.i
 
-server1.s: server1.cpp.s
-.PHONY : server1.s
+mainServer.s: mainServer.cpp.s
+.PHONY : mainServer.s
 
 # target to generate assembly for a file
-server1.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_server.dir/build.make CMakeFiles/rdb_server.dir/server1.cpp.s
-.PHONY : server1.cpp.s
+mainServer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_server1.dir/build.make CMakeFiles/rdb_server1.dir/mainServer.cpp.s
+.PHONY : mainServer.cpp.s
+
+serverCls.o: serverCls.cpp.o
+.PHONY : serverCls.o
+
+# target to build an object file
+serverCls.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_server1.dir/build.make CMakeFiles/rdb_server1.dir/serverCls.cpp.o
+.PHONY : serverCls.cpp.o
+
+serverCls.i: serverCls.cpp.i
+.PHONY : serverCls.i
+
+# target to preprocess a source file
+serverCls.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_server1.dir/build.make CMakeFiles/rdb_server1.dir/serverCls.cpp.i
+.PHONY : serverCls.cpp.i
+
+serverCls.s: serverCls.cpp.s
+.PHONY : serverCls.s
+
+# target to generate assembly for a file
+serverCls.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_server1.dir/build.make CMakeFiles/rdb_server1.dir/serverCls.cpp.s
+.PHONY : serverCls.cpp.s
 
 # Help Target
 help:
@@ -161,10 +185,13 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... rdb_server"
-	@echo "... server1.o"
-	@echo "... server1.i"
-	@echo "... server1.s"
+	@echo "... rdb_server1"
+	@echo "... mainServer.o"
+	@echo "... mainServer.i"
+	@echo "... mainServer.s"
+	@echo "... serverCls.o"
+	@echo "... serverCls.i"
+	@echo "... serverCls.s"
 .PHONY : help
 
 

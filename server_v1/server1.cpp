@@ -130,7 +130,7 @@ int main(int argc, char *argv[]) {
 
     addr.sin_family = AF_INET;
     addr.sin_port = htons(8080);
-    addr.sin_addr.s_addr = htonl(INADDR_ANY);   // 
+    addr.sin_addr.s_addr = htonl(INADDR_ANY);
 
     if (bind(listener, (struct sockaddr*) &addr, sizeof(addr)) < 0) {
         perror("bind");

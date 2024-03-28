@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/darya/cxx_projects/db_server/client
+CMAKE_SOURCE_DIR = /home/darya/Documents/fromGit/Sockserver_v1/client_v1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/darya/cxx_projects/db_server/client/build
+CMAKE_BINARY_DIR = /home/darya/Documents/fromGit/Sockserver_v1/client_v1/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/darya/cxx_projects/db_server/client/build/CMakeFiles /home/darya/cxx_projects/db_server/client/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/darya/Documents/fromGit/Sockserver_v1/client_v1/build/CMakeFiles /home/darya/Documents/fromGit/Sockserver_v1/client_v1/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/darya/cxx_projects/db_server/client/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/darya/Documents/fromGit/Sockserver_v1/client_v1/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,41 +117,65 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named rdb_client
+# Target rules for targets named rdb_client1
 
 # Build rule for target.
-rdb_client: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 rdb_client
-.PHONY : rdb_client
+rdb_client1: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 rdb_client1
+.PHONY : rdb_client1
 
 # fast build rule for target.
-rdb_client/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_client.dir/build.make CMakeFiles/rdb_client.dir/build
-.PHONY : rdb_client/fast
+rdb_client1/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_client1.dir/build.make CMakeFiles/rdb_client1.dir/build
+.PHONY : rdb_client1/fast
 
-client1.o: client1.cpp.o
-.PHONY : client1.o
+clientCls.o: clientCls.cpp.o
+.PHONY : clientCls.o
 
 # target to build an object file
-client1.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_client.dir/build.make CMakeFiles/rdb_client.dir/client1.cpp.o
-.PHONY : client1.cpp.o
+clientCls.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_client1.dir/build.make CMakeFiles/rdb_client1.dir/clientCls.cpp.o
+.PHONY : clientCls.cpp.o
 
-client1.i: client1.cpp.i
-.PHONY : client1.i
+clientCls.i: clientCls.cpp.i
+.PHONY : clientCls.i
 
 # target to preprocess a source file
-client1.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_client.dir/build.make CMakeFiles/rdb_client.dir/client1.cpp.i
-.PHONY : client1.cpp.i
+clientCls.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_client1.dir/build.make CMakeFiles/rdb_client1.dir/clientCls.cpp.i
+.PHONY : clientCls.cpp.i
 
-client1.s: client1.cpp.s
-.PHONY : client1.s
+clientCls.s: clientCls.cpp.s
+.PHONY : clientCls.s
 
 # target to generate assembly for a file
-client1.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_client.dir/build.make CMakeFiles/rdb_client.dir/client1.cpp.s
-.PHONY : client1.cpp.s
+clientCls.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_client1.dir/build.make CMakeFiles/rdb_client1.dir/clientCls.cpp.s
+.PHONY : clientCls.cpp.s
+
+mainClient.o: mainClient.cpp.o
+.PHONY : mainClient.o
+
+# target to build an object file
+mainClient.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_client1.dir/build.make CMakeFiles/rdb_client1.dir/mainClient.cpp.o
+.PHONY : mainClient.cpp.o
+
+mainClient.i: mainClient.cpp.i
+.PHONY : mainClient.i
+
+# target to preprocess a source file
+mainClient.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_client1.dir/build.make CMakeFiles/rdb_client1.dir/mainClient.cpp.i
+.PHONY : mainClient.cpp.i
+
+mainClient.s: mainClient.cpp.s
+.PHONY : mainClient.s
+
+# target to generate assembly for a file
+mainClient.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdb_client1.dir/build.make CMakeFiles/rdb_client1.dir/mainClient.cpp.s
+.PHONY : mainClient.cpp.s
 
 # Help Target
 help:
@@ -161,10 +185,13 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... rdb_client"
-	@echo "... client1.o"
-	@echo "... client1.i"
-	@echo "... client1.s"
+	@echo "... rdb_client1"
+	@echo "... clientCls.o"
+	@echo "... clientCls.i"
+	@echo "... clientCls.s"
+	@echo "... mainClient.o"
+	@echo "... mainClient.i"
+	@echo "... mainClient.s"
 .PHONY : help
 
 
